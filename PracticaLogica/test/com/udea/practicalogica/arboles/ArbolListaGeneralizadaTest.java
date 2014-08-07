@@ -193,9 +193,35 @@ public class ArbolListaGeneralizadaTest {
         NodoLista result = instance.buscar(dato);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
+    @Test
+    public void testBuscarHijo() {
+        System.out.println("buscar");
+        Object dato = null;
+        ArbolListaGeneralizada instance = new ArbolListaGeneralizada();
+        
+         NodoLista raiz = instance.agregar(null,new NodoS("soy la raiz"));
+        NodoLista primerHijo = instance.agregar(raiz,new NodoS("soy el primer hijo"));
+        
+        String datoSegundoHijo = "soy el hermano del primer hijo";
+        
+        NodoLista segundoHijo = new NodoS(datoSegundoHijo);
+        NodoLista segundoHijor = instance.agregar(raiz,segundoHijo);
+        
+        
+        
+        NodoLista expResult = segundoHijo;
+        NodoLista result = instance.buscar(datoSegundoHijo);
+        
+        
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+    
+    
     /**
      * Test of retornPadre method, of class ArbolListaGeneralizada.
      */
@@ -208,7 +234,7 @@ public class ArbolListaGeneralizadaTest {
         NodoLista result = instance.retornPadre(dato);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -222,7 +248,51 @@ public class ArbolListaGeneralizadaTest {
         NodoLista result = instance.retornPadre(null);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
+    }
+    
+    @Test
+    public void testRetornPadrehermanoDato_NodoLista() {
+        System.out.println("retornPadre");
+        ArbolListaGeneralizada instance = new ArbolListaGeneralizada();
+        
+        NodoLista raiz = instance.agregar(null,new NodoS("soy la raiz"));
+        NodoLista primerHijo = instance.agregar(raiz,new NodoS("soy el primer hijo"));
+        
+        String datoPrimerHijo = "soy el hermano del primer hijo";
+        
+        NodoLista segundoHijo = new NodoS(datoPrimerHijo);
+        NodoLista segundoHijor = instance.agregar(raiz,segundoHijo);
+        
+        
+        
+        NodoLista expResult = raiz;
+        NodoLista result = instance.retornPadre(datoPrimerHijo);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+    
+    @Test
+    public void testRetornPadrehermanoNodo_NodoLista() {
+        System.out.println("retornPadre");
+        ArbolListaGeneralizada instance = new ArbolListaGeneralizada();
+        
+        NodoLista raiz = instance.agregar(null,new NodoS("soy la raiz"));
+        NodoLista primerHijo = instance.agregar(raiz,new NodoS("soy el primer hijo"));
+        
+        String datoPrimerHijo = "soy el hermano del primer hijo";
+        
+        NodoLista segundoHijo = new NodoS(datoPrimerHijo);
+        NodoLista segundoHijor = instance.agregar(raiz,segundoHijo);
+        
+        
+        
+        NodoLista expResult = raiz;
+        NodoLista result = instance.retornPadre(segundoHijo);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
     }
     
     public class NodoS extends NodoLista<String>{
