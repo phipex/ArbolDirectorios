@@ -101,6 +101,57 @@ public class ArbolListaGeneralizadaTest {
         //fail("The test case is a prototype.");
     }
     
+    @Test
+    public void testAgregarHijoHijoRaiz() {
+        System.out.println("agregar");
+        ArbolListaGeneralizada<String> instance = new ArbolListaGeneralizada<String>();
+        NodoLista raiz = instance.agregar(null,new NodoS("soy la raiz"));
+        
+        
+        NodoLista primerHijo = instance.agregar(raiz,new NodoS("soy el primer hijo"));
+        
+        
+        
+        NodoLista expResult = new NodoS("soy el hijo del segundo hijo");
+        
+        NodoLista apuntadorSubArbol = new NodoS(null,expResult );
+        
+        NodoLista result = instance.agregar(raiz,apuntadorSubArbol);
+        //assertEquals(expResult.dato, result.dato);
+        NodoLista primerHijor = raiz.liga;
+        NodoLista segundOhijo = primerHijor.liga;
+        NodoLista hijoHijo = segundOhijo.subarbol;
+        assertEquals(hijoHijo.dato, result.subarbol.dato);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+    
+    @Test
+    public void testAgregarHijoHijoRaiz2() {
+        System.out.println("agregar");
+        ArbolListaGeneralizada<String> instance = new ArbolListaGeneralizada<String>();
+        NodoLista raiz = instance.agregar(null,new NodoS("soy la raiz"));
+        
+        
+        NodoLista primerHijo = instance.agregar(raiz,new NodoS("soy el primer hijo"));
+        
+        
+        
+        NodoLista expResult = new NodoS("soy el hijo del segundo hijo");
+        
+        expResult.convierteSubArbol();
+        
+        
+        NodoLista result = instance.agregar(raiz,expResult);
+        //assertEquals(expResult.dato, result.dato);
+        NodoLista primerHijor = raiz.liga;
+        NodoLista segundOhijo = primerHijor.liga;
+        NodoLista hijoHijo = segundOhijo.subarbol;
+        assertEquals(hijoHijo.dato, result.subarbol.dato);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+    
     /**
      * Test of elimina method, of class ArbolListaGeneralizada.
      */
@@ -180,11 +231,39 @@ public class ArbolListaGeneralizadaTest {
             super(dato);
         }
 
+        public NodoS(NodoLista liga, String dato) {
+            super(liga, dato);
+        }
+
+        public NodoS(NodoLista liga, NodoLista subarbol) {
+            super(liga, subarbol);
+        }
+
+        
+        
         @Override
         public int compareTo(String t) {
             return this.dato.compareTo(t);
         }
 
+      
+        
+        @Override
+        public NodoLista convierteSubArbol() {
+            NodoLista nodoConvertido = null;
+            
+            NodoLista dato = new NodoS(this.dato);
+            
+            this.sw = true;
+            
+            this.dato = null;
+            
+            this.subarbol = dato;
+            
+            nodoConvertido = this;
+            
+            return nodoConvertido;
+        }
         
     
     

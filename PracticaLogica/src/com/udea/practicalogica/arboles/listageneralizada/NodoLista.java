@@ -71,7 +71,6 @@ public abstract class NodoLista<T> implements Comparable<T>{
         this.sw = true;
     }
     
-    
-    
+    public abstract NodoLista convierteSubArbol();
     
 }

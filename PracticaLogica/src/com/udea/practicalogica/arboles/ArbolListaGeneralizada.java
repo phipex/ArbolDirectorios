@@ -52,6 +52,8 @@ public class ArbolListaGeneralizada<T>{
         return nuevo;
     }
     
+    
+    
     /**
      * Elimina la primera ocurrencia de un nodo con un dato igual al parametro
      * @param dato dato a buscar para eliminar
@@ -125,6 +127,20 @@ public class ArbolListaGeneralizada<T>{
         
         //return padre;
     
+    }
+    
+    /**
+     * Determina si el nodo es la raiz de un subarbol y retorna el nodo que lo apunta
+     * @param nodo nodo a evaluar
+     * @return el nodo que apunta o null 
+     */
+    public NodoLista esSubArbol(NodoLista nodo){
+        
+        NodoLista esPadre = null;
+        
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //return esPadre;
+        
     }
     
 }
