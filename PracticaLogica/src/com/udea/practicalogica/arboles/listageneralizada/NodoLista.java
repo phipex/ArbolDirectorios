@@ -9,8 +9,9 @@ package com.udea.practicalogica.arboles.listageneralizada;
 /**
  *  Clase que representa un nodo de la lista ligada generalizada
  * @author Andres Felipe Montoya
+ * @param <T>
  */
-public class NodoLista<T> {
+public abstract class NodoLista<T> implements Comparable<NodoLista<T>>{
     
     /**
      * Apunta al siquiente nodo en la lista
