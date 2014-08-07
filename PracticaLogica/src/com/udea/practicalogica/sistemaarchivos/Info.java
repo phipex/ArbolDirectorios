@@ -9,4 +9,7 @@ package com.udea.practicalogica.sistemaarchivos;
 //TODO crear funcion que cree un archivo
 //TODO crear funcion que elimine un archivo
 //TODO crar funcion que mueva un archivo
+//TODO crear funcion que cree una carpeta
+//TODO crear funcion que elimine una carpeta
+//TODO crar funcion que mueva una carpeta
 //TODO crear funcion que retorn las unidades del computador

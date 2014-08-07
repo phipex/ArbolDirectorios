@@ -11,7 +11,7 @@ package com.udea.practicalogica.arboles.listageneralizada;
  * @author Andres Felipe Montoya
  * @param <T>
  */
-public abstract class NodoLista<T> implements Comparable<NodoLista<T>>{
+public abstract class NodoLista<T> implements Comparable<T>{
     
     /**
      * Apunta al siquiente nodo en la lista
@@ -47,6 +47,15 @@ public abstract class NodoLista<T> implements Comparable<NodoLista<T>>{
      */
     public NodoLista(NodoLista liga, T dato) {
         this.liga = liga;
+        this.dato = dato;
+        this.sw = false;
+    }
+
+    /**
+     * Constructor que inicializa el nodo como contenedor de un dato
+     * @param dato dato en el nodo
+     */
+    public NodoLista(T dato) {
         this.dato = dato;
         this.sw = false;
     }

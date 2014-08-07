@@ -86,43 +86,62 @@ public class FileTreeModificado extends JPanel implements ActionListener{
  
   /** Add nodes from under "dir" into curTop. Highly recursive. */
   DefaultMutableTreeNode addNodes(DefaultMutableTreeNode curTop, File dir) {
-    String curPath = dir.getPath();
-      System.out.println("dir:"+curPath);
+    String curPath = dir.getPath();//retorna el path
+    System.out.println("dir:"+curPath);
     DefaultMutableTreeNode curDir = new DefaultMutableTreeNode(curPath);
+    
     if (curTop != null) { // should only be null at root
       curTop.add(curDir);
     }
+    
     Vector ol = new Vector();
-    String[] tmp = dir.list();
+    String[] tmp = dir.list();//retorna una lista con los archivos y los directorios
       System.out.println("tmp:"+tmp);
-    if(tmp == null){
+    if(tmp == null){//no tiene directorios
         return null;
     }  
       
-    for (int i = 0; i < tmp.length; i++)
+    for (int i = 0; i < tmp.length; i++)//llena el vector con los elementos de la lista
       ol.addElement(tmp[i]);
-    Collections.sort(ol, String.CASE_INSENSITIVE_ORDER);
+    Collections.sort(ol, String.CASE_INSENSITIVE_ORDER);//organiza la lista en order
     File f;
     Vector files = new Vector();
     // Make two passes, one for Dirs and one for Files. This is #1.
     for (int i = 0; i < ol.size(); i++) {
       String thisObject = (String) ol.elementAt(i);
       String newPath;
-      if (curPath.equals("."))
+      
+      if (curPath.equals("."))//determina el path actual del objeto?
         newPath = thisObject;
       else
         newPath = curPath + File.separator + thisObject;
-      if ((f = new File(newPath)).isDirectory())
+      
+      if ((f = new File(newPath)).isDirectory())//si es un directorio llama recursivamente este metodo
         addNodes(curDir, f);
       else
-        files.addElement(thisObject);
+        files.addElement(thisObject);//si es un archivo lo agrega a la lista de archivos
+      
     }
     // Pass two: for files.
     for (int fnum = 0; fnum < files.size(); fnum++)
-      curDir.add(new DefaultMutableTreeNode(files.elementAt(fnum)));
+      curDir.add(new DefaultMutableTreeNode(files.elementAt(fnum)));//por cada archivo agrega un nodo
+    
     return curDir;
   }
  
+  /**
+   * por cada atomo agrega un archivo
+   * por cada subarbol agrega un nuevo file y llama recursivamente
+   * 
+   */
+  
+  /**
+   * por cada archivo agrega un nodo
+   * por cada directorio agrea un subarbol
+   *  
+   */
+  
+  //-----------------//
   public Dimension getMinimumSize() {
     return new Dimension(200, 400);
   }

@@ -17,15 +17,39 @@ public class ArbolListaGeneralizada<T>{
     /**
      * Agrega un nuevo nodo al arbol
      * @param padre nodo al que se le debe agregar como hijo un nodo con el dato en el parametro
-     * @param dato dato a agregar en el nuevo nodo
+     * @param dato nodo con el dato a agregar 
      * @return apuntador al nuevo nodo en el arbol o null si el padre no esta contenido en el arbol
      */
-    public NodoLista<T> agregar(NodoLista<T> padre, T dato){
+    public NodoLista agregar(NodoLista<T> padre, NodoLista<T> dato){
         NodoLista<T> nuevo = null;
     
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //si dato es igual a null nada
         
-        //return nuevo;
+        if(dato != null){
+            if(this.raiz == null  || padre != null){
+                if(padre == null){//primer nodo del arbol
+                    padre = dato;
+                }else{
+                    NodoLista<T> p = null;
+                    p = padre;
+                    
+                    while(p != null && p.liga != null){
+                        p = p.liga;
+                    }
+                    p.liga = dato;
+                    
+                }
+                if(this.raiz == null){
+                    this.raiz = padre;
+                }
+                nuevo = dato;
+            }
+            
+        }
+        
+        
+        
+        return nuevo;
     }
     
     /**
