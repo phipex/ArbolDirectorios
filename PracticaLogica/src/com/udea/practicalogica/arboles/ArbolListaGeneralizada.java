@@ -266,4 +266,59 @@ public class ArbolListaGeneralizada<T> {
 
     }
 
+    @Override
+    public String toString() {
+        String name = "ArbolListaGeneralizada{" + "raiz=" + raiz + '}';
+        System.out.println(""+name);
+        if (this.raiz != null) {
+            int n = 0;
+            
+            T c;
+            
+            NodoLista p, q;
+            
+            Stack<NodoLista> pila = new Stack<NodoLista>();
+            
+            p = this.raiz;
+            
+            
+            
+            pila.push(p);
+            p = p.liga;
+            n++;
+            while (p != null) {
+                if (!p.sw) {
+                    
+                    System.out.println(espacios(n)+p.dato);
+                    p = p.liga;
+                } else {
+                    q = p.subarbol;
+                    System.out.println(espacios(n)+p.dato);
+                    {
+                        pila.push(p.liga);
+                        pila.push(q);
+                        p = q.liga;
+                        n++;
+                        n++;
+                    }
+                }
+                while (p == null && !pila.isEmpty()) {
+                    p = pila.pop();
+                    n--;
+                }
+            }
+        }
+        
+        return name;
+    }
+
+    public static String espacios(int n){
+    
+        String espacio = "  ";
+        for (int i = 0; i < n; i++) {
+            espacio = espacio + "  ";
+        }
+        return espacio;
+    }
+    
 }
